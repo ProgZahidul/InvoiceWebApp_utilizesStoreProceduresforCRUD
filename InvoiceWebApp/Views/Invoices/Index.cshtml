@@ -1,0 +1,107 @@
+﻿@model IEnumerable<InvoiceWebApp.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassengerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CardHolder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="data-@item.Id">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassengerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardHolder)
+                </td>
+                <td>
+                    <img src="@item.ImagePath" width="100" alt="@item.PassengerName" />
+                </td>
+
+
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <button class="btn  btn-outline-success btn-icon-split" onclick="ajaxDelete(@item.Id)">
+                        Ajax Delete
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+
+                Grand total = @ViewBag.GrandTotal and No of Invoce is @ViewBag.Count and Average Invoice tiotal is @ViewBag.Average
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<script>
+
+    function ajaxDelete(id) {
+
+        var ok = confirm(`Delete invoice?`);
+
+        if (ok) {
+            $.ajax({
+
+                url: "/deleteinvoice/" + id,
+                type: "delete",
+
+
+                success: function () {
+                    alert("success");
+
+                    $('#data-' + id).remove();
+                }
+            });
+        }
+    }
+
+</script>

@@ -1,0 +1,53 @@
+﻿@model List<TicketInfo>
+
+<table class="table table-responsive table-hover table-bordered table-striped">
+
+	<thead>
+		<tr>
+			<th>
+				Item Name
+			</th>
+			<th>
+				Unit Price
+			</th>
+			<th>
+				Quantity
+			</th>
+			<th>
+				Total
+			</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					<input asp-for="@item.ticket.RouteName" class="form-control" readonly />
+				</td>
+				<td>
+					<input asp-for="@item.ticket.Price" class="form-control" readonly />
+				</td>
+				<td>
+					<input asp-for="@item.Quantity" class="form-control" readonly />
+				</td>
+				<td>
+					<input asp-for="@item.Total" class="form-control" readonly />
+				</td>
+			</tr>
+		}
+
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+				Invoice Total = @ViewBag.Total and No of Item is @ViewBag.Count
+
+				Average item Price @Model.Average(i => i.ticket?.Price)
+			</td>
+		</tr>
+	</tfoot>
+
+</table>
