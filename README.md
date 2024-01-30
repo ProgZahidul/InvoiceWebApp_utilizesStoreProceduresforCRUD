@@ -18,11 +18,11 @@ Technologies Used
 Specifications
 The application is designed around the following specifications:
 
-a. Code First Approach: Utilizing Code First ensures the database schema is derived from the application's domain model.
+a.  Code First Approach: Utilizing Code First ensures the database schema is derived from the application's domain model.
 
-b. Stored Procedures: Extensive use of Stored Procedures for CRUD operations provides better control over database interactions.
+b.  Stored Procedures: Extensive use of Stored Procedures for CRUD operations provides better control over database interactions.
 
-c. Robust Set of Features: The application incorporates a wide range of features and requirements, making it suitable for diverse projects.
+c.  Robust Set of Features: The application incorporates a wide range of features and requirements, making it suitable for diverse projects.
 
 Usage
 Explore the API endpoints for CRUD operations. Use Stored Procedures for efficient and secure database interactions. Test various scenarios and functionalities to ensure the application meets your specific requirements.
